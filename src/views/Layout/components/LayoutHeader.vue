@@ -1,6 +1,4 @@
 <script setup>
-import { getCategoryAPI } from '@/apis/layoutAPI';
-import { onMounted, ref } from 'vue';
 import { useCategoryStore } from '@/stores/category';
 
 const category = useCategoryStore()
