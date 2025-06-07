@@ -1,9 +1,9 @@
-import http from "@/utils/http";
+import httpInstance from "@/utils/http";
 
 
 //获取轮播图
 export function getBannerAPI() {
-  return http({
+  return httpInstance({
     url: '/home/banner'
   })
 }
@@ -14,7 +14,7 @@ export function getBannerAPI() {
  * @return {*}
  */
 export const findNewAPI = () => {
-  return http({
+  return httpInstance({
     url: '/home/new'
   })
 }
@@ -25,7 +25,18 @@ export const findNewAPI = () => {
  * @return {*}
  */
 export const getHotAPI = () => {
-  return http({
+  return httpInstance({
     url: '/home/hot'
+  })
+}
+
+/**
+ * @description: 获取所有商品模块
+ * @param {*}
+ * @return {*}
+ */
+export const getGoodsAPI = () => {
+  return httpInstance({
+    url: '/home/goods'
   })
 }
