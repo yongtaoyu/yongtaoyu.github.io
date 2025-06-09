@@ -2,8 +2,10 @@
 import { ref, useTemplateRef } from 'vue';
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
-import { loginAPI } from '@/apis/user';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user';
+
+const userStore = useUserStore()
 
 const ruleForm = ref({
   account: 'xiaotuxian001',
@@ -32,7 +34,7 @@ const doLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
       //TODO LOGIN
-      const res = await loginAPI({ account, password })
+      await userStore.getUserInfor({ account, password })
       ElMessage({
         message: '登陆成功',
         type: 'success',

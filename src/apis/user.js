@@ -1,9 +1,9 @@
 import request from '@/utils/http'
 
-export function loginAPI(data) {
+export function loginAPI({ account, password }) {
   return request({
     url: '/login',
     method: 'post',
-    data: data
+    data: { account, password }
   })
 }
