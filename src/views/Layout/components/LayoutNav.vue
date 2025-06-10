@@ -1,8 +1,9 @@
 <script setup>
 import { useUserStore } from '@/stores/user'
+import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
 
-const { userInfo, clearUserInfo } = useUserStore()
+const { userInfo, clearUserInfo } = storeToRefs(useUserStore())
 const router = useRouter()
 const confirm = () => {
   clearUserInfo()
