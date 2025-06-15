@@ -1,9 +1,9 @@
 import dayjs from "dayjs"
-import { computed, onUnmounted, ref } from "vue"
+import { computed, ref } from "vue"
 
 export const useCountDown = () => {
   const time = ref(null)
-  const timer = null
+  let timer = null
   const formatTime = computed(() => dayjs.unix(time.value).format('mm分ss秒'))
   const start = (currentTime) => {
     time.value = currentTime
@@ -11,12 +11,14 @@ export const useCountDown = () => {
       time.value--
     }, 1000)
   }
-  onUnmounted(() => {
+  // 返回一个清理函数，由调用者来执行
+  const stop = () => {
     timer && clearInterval(timer)
-  })
+  }
 
   return {
     formatTime,
-    start
+    start,
+    stop
   }
 }
